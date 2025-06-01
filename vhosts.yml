@@ -11,4 +11,4 @@
     - "3site.com"
 
   roles:
-  - nginx-vhosts
+  - nginx_vhosts
