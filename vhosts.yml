@@ -2,13 +2,14 @@
 - name: Install NGINX with vhosts
   hosts: webservers
   become: true
-  become_method: sudo
+  become_method: ansible.builtin.sudo
 
   vars:
     sites:
-    - "1site.com"
-    - "2site.com"
-    - "3site.com"
+      - "1site.com"
+      - "2site.com"
+      - "3site.com"
 
   roles:
-  - nginx_vhosts
+    - nginx_vhosts
+  

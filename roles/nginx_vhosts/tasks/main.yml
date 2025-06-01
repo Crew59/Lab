@@ -10,7 +10,7 @@
     dest: "/etc/nginx/conf.d/site-{{ item }}.conf"
     owner: root
     group: root
-    mode: 0644
+    mode: u=rw,g=r,o=r
   loop: "{{ sites }}"
   notify: restart nginx
 
@@ -20,15 +20,14 @@
     state: directory
     owner: root
     group: root
-    mode: 0644
+    mode: u=rw,g=r,o=r
   loop: "{{ sites }}"
 
 - name: Copy indeces from templates
-  template:
+  ansible.builtin.template:
     src: 'index.html.j2'
     dest: "/var/www/{{ item }}/index.html"
     owner: root
     group: root
-    mode: 0644
-  loop: "{{ sites }}"
-    
+    mode: u=rw,g=r,o=r
+  loop: "{{ sites }}" 
